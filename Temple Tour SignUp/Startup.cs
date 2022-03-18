@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Temple_Tour_SignUp.Models;
 
 namespace Temple_Tour_SignUp
 {
@@ -24,6 +26,9 @@ namespace Temple_Tour_SignUp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<SignUpContext>(options =>
+            options.UseSqlite(Configuration.GetConnectionString("SignUpConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
