@@ -11,11 +11,12 @@ namespace Temple_Tour_SignUp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private SignUpContext _blahContext { get; set; }
+
+        public HomeController(SignUpContext signUp)
         {
-            _logger = logger;
+            _blahContext = signUp;
         }
 
         public IActionResult Index()
@@ -23,15 +24,22 @@ namespace Temple_Tour_SignUp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult SignUpSlots()
         {
+            var tours = _blahContext.TimeSlotResponse
+                .OrderBy(x => x.Date).ToList();
+            return View(tours);
+        }
+
+        [HttpPost]
+        public IActionResult SignUpSlots(TimeSlot ts)
+        {
+            _blahContext.Add(ts);
+            _blahContext.SaveChanges();
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        
     }
 }
