@@ -1,7 +1,15 @@
 ﻿
 @{
 }
-@model List<TimeSlot>
+@*@model List<TimeSlot>*@
+
+@model AppointmentsViewModel
+
+<label>Week 1: Sunday, March 20th - Saturday March 26th, 2022</label>
+
+<div page-blah="@Model.PageInfo" page-action="SignUpSlots" page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" page-class-enabled="true" class=""></div>
+<br />
 
 <table class="table table-bordered table-striped">
 
@@ -18,7 +26,7 @@
     </thead>
 
     <tbody>
-        @foreach (var x in Model)
+        @foreach (var x in Model.TimeSlots)
         {
             <tr>
 

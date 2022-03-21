@@ -7,5 +7,6 @@ namespace Temple_Tour_SignUp.Models
 {
     public interface IAppointmentRepo
     {
+        IQueryable<TimeSlot> TimeSlots { get; }
     }
 }
