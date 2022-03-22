@@ -30,7 +30,7 @@ namespace Temple_Tour_SignUp
 
             services.AddDbContext<SignUpContext>(options =>
             {
-                options.UseSqlite(Configuration["ConnectionStrings:SignUpConnection"]);
+                options.UseSqlite(Configuration["ConnectionStrings:SignUpDBConnection"]);
             });
 
             //Blazor stuff

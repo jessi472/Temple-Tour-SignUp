@@ -27,19 +27,41 @@ namespace Temple_Tour_SignUp.Controllers
         [HttpGet]
         public IActionResult SignUpSlots()
         {
-            var tours = _blahContext.TimeSlotResponse
+            var tours = _blahContext.TimeSlots
                 .OrderBy(x => x.Date).ToList();
             return View(tours);
         }
 
-        [HttpPost]
-        public IActionResult SignUpSlots(TimeSlot ts)
+        //[HttpPost]
+        //public IActionResult SignUpSlots(int timeSlotId)
+        //{
+        //    var timeSlot = _blahContext.TimeSlots.FirstOrDefault(x => x.TimeSlotId == timeSlotId);
+        //    timeSlot.Taken = true;
+        //    ViewBag.TimeSlot = timeSlot;
+        //    //_blahContext.Add(ts);
+        //    //_blahContext.SaveChanges();
+        //    return RedirectToAction("SignUpForm");
+        //}
+
+        [HttpGet]
+        public IActionResult SignUpForm(int timeSlotId)
         {
-            _blahContext.Add(ts);
-            _blahContext.SaveChanges();
-            return View();
+            var timeSlot = _blahContext.TimeSlots.FirstOrDefault(x => x.TimeSlotId == timeSlotId);
+            timeSlot.Taken = true;
+            _blahContext.SaveChanges(); //save timeslot as taken
+
+            ViewBag.TimeSlot = timeSlot;
+
+            return View("SignUp");
         }
 
+        [HttpPost]
+        public IActionResult SignUpForm (Appointment appt)
+        {
+            _blahContext.Appointments.Add(appt);
+            _blahContext.SaveChanges();
+            return View("Confirmation", appt);
+        }
         
     }
 }

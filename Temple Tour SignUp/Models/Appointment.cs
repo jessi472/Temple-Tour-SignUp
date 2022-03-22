@@ -10,20 +10,20 @@ namespace Temple_Tour_SignUp.Models
     {
         [Key]
         [Required]
-        int AppointmentId { get; set; }
+        public int AppointmentId { get; set; }
         //link to time slot model like we did with categories
         [Required]
-        string GroupName { get; set; }
+        public string GroupName { get; set; }
         [Required]
         [Range(1, 15)] //(Max of 15)
-        int GroupSize { get; set; }
+        public int GroupSize { get; set; }
         [Required]
-        string Email { get; set; }
-        string Phone { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
 
         //Foreign Key Relationship
         [Required]
-        int TimeSlotId { get; set; }
+        public int TimeSlotId { get; set; }
         public TimeSlot TimeSlot { get; set; }
     }
 }
