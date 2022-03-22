@@ -32,6 +32,9 @@ namespace Temple_Tour_SignUp
             services.AddDbContext<SignUpContext>(options =>
             options.UseSqlite(Configuration.GetConnectionString("SignUpConnection")));
 
+            //Repository
+            services.AddScoped<IAppointmentRepo, EFAppointmentRepo>();
+
             //Blazor stuff
             services.AddRazorPages();
             services.AddDistributedMemoryCache();
