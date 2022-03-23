@@ -25,20 +25,23 @@
 
             @foreach (Appointment a in AppointmentData)
             {
-                <tr>
-                    <td>@a.GroupName</td>
-                    <td>@a.GroupSize</td>
-                    <td>@a.Email</td>
-                    <td>@a.Phone</td>
-                    @*Should add in the time slot for each appointment*@
-                    @*@foreach (TimeSlot item in a.Timeslot)
-                    {
-                        <td>@a.Date</td>
-                        <td>@a.Time</td>
-                    }*@
-                    <td><button>Edit</button></td>
-                    <td><button>Delete</button></td>
-                </tr>
+        <tr>
+            <td>@a.GroupName</td>
+            <td>@a.GroupSize</td>
+            <td>@a.Email</td>
+            <td>@a.Phone</td>
+            @*Should add in the time slot for each appointment*@
+            @*@foreach (TimeSlot item in a.Timeslot)
+        {
+           <td>@a.TimeSlot.Date</td>
+            <td>@a.TimeSlot.Time</td>
+                <td>@a.TimeSlotId</td>
+        }*@
+
+
+            <td><button>Edit</button></td>
+            <td><button class="btn btn-danger btn-sm" @onclick="@(x=>DeleteAppointment(a))">Delete</button></td>
+        </tr>
             }
         }
         else
