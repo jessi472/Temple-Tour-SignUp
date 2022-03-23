@@ -6,17 +6,18 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Temple_Tour_SignUp.Models;
+using Temple_Tour_SignUp.Models.ViewModels;
 
 namespace Temple_Tour_SignUp.Controllers
 {
     public class HomeController : Controller
     {
 
-        private SignUpContext _blahContext { get; set; }
+        private IAppointmentRepo repo;
 
-        public HomeController(SignUpContext signUp)
+        public HomeController(IAppointmentRepo temp)
         {
-            _blahContext = signUp;
+            repo = temp;
         }
 
         public IActionResult Index()
@@ -25,23 +26,28 @@ namespace Temple_Tour_SignUp.Controllers
         }
 
         [HttpGet]
-        public IActionResult SignUpSlots()
+        public IActionResult SignUpSlots( int pageNum = 1)
         {
-            var tours = _blahContext.TimeSlots
-                .OrderBy(x => x.Date).ToList();
-            return View(tours);
-        }
+            int pageSize = 13;
 
-        //[HttpPost]
-        //public IActionResult SignUpSlots(int timeSlotId)
-        //{
-        //    var timeSlot = _blahContext.TimeSlots.FirstOrDefault(x => x.TimeSlotId == timeSlotId);
-        //    timeSlot.Taken = true;
-        //    ViewBag.TimeSlot = timeSlot;
-        //    //_blahContext.Add(ts);
-        //    //_blahContext.SaveChanges();
-        //    return RedirectToAction("SignUpForm");
-        //}
+            var x = new AppointmentsViewModel
+            {
+                TimeSlots = repo.TimeSlots
+                .OrderBy(t => t.Date)
+                .Skip((pageNum - 1)* pageSize)
+                .Take(pageSize),
+
+                PageInfo = new PageInfo
+                {
+                    TotalAppointments = repo.TimeSlots.Count(),
+                    AppointmentsPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
+
+            
+            return View(x);
+        }
 
         [HttpGet]
         public IActionResult SignUpForm(int timeSlotId)
@@ -69,9 +75,6 @@ namespace Temple_Tour_SignUp.Controllers
             {
                 return View(appt);
             }
-
-            return View("Confirmation", appt);
         }
-        
     }
 }

@@ -33,6 +33,9 @@ namespace Temple_Tour_SignUp
                 options.UseSqlite(Configuration["ConnectionStrings:SignUpDBConnection"]);
             });
 
+            //Repository
+            services.AddScoped<IAppointmentRepo, EFAppointmentRepo>();
+
             //Blazor stuff
             services.AddRazorPages();
             services.AddDistributedMemoryCache();
