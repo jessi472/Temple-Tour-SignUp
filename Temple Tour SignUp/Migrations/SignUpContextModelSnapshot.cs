@@ -75,7 +75,7 @@ namespace Temple_Tour_SignUp.Migrations
 
                     b.HasKey("TimeSlotId");
 
-                    b.ToTable("TimeSlots");
+                    b.ToTable("TimeSlotResponse");
 
                     b.HasData(
                         new

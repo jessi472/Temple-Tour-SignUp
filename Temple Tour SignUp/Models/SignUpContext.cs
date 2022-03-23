@@ -12,8 +12,8 @@ namespace Temple_Tour_SignUp.Models
         {
         }
 
+        public DbSet<TimeSlot> TimeSlotResponse { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
-        public DbSet<TimeSlot> TimeSlots { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
@@ -755,15 +755,16 @@ namespace Temple_Tour_SignUp.Models
 
                 );
             mb.Entity<Appointment>().HasData(
-                new Appointment
-                {
-                    AppointmentId = 1,
-                    GroupName = "test",
-                    GroupSize = 4,
-                    Email = "test@test.com",
-                    Phone = "555-5555",
-                    TimeSlotId = 1
-                });
+              new Appointment
+              {
+                  AppointmentId = 1,
+                  GroupName = "test",
+                  GroupSize = 4,
+                  Email = "test@test.com",
+                  Phone = "555-5555",
+                  TimeSlotId = 1
+              });
         }
+
     }
 }

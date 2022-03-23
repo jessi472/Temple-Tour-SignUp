@@ -25,5 +25,6 @@ namespace Temple_Tour_SignUp.Models
         [Required]
         public int TimeSlotId { get; set; }
         public TimeSlot TimeSlot { get; set; }
+
     }
 }

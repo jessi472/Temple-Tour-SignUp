@@ -26,7 +26,7 @@ namespace Temple_Tour_SignUp.Controllers
         }
 
         [HttpGet]
-        public IActionResult SignUpSlots( int pageNum = 1)
+        public IActionResult SignUpSlots(int pageNum = 1)
         {
             int pageSize = 13;
 
@@ -34,7 +34,7 @@ namespace Temple_Tour_SignUp.Controllers
             {
                 TimeSlots = repo.TimeSlots
                 .OrderBy(t => t.Date)
-                .Skip((pageNum - 1)* pageSize)
+                .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
@@ -45,16 +45,16 @@ namespace Temple_Tour_SignUp.Controllers
                 }
             };
 
-            
+
             return View(x);
         }
 
         [HttpGet]
         public IActionResult SignUpForm(int timeSlotId)
         {
-            var timeSlot = _blahContext.TimeSlots.FirstOrDefault(x => x.TimeSlotId == timeSlotId);
+            var timeSlot = repo.TimeSlots.FirstOrDefault(x => x.TimeSlotId == timeSlotId);
             timeSlot.Taken = true;
-            _blahContext.SaveChanges(); //save timeslot as taken
+            //repo.SaveAppoint(); //save timeslot as taken
 
             ViewBag.TimeSlot = timeSlot;
 
@@ -62,12 +62,12 @@ namespace Temple_Tour_SignUp.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignUpForm (Appointment appt)
+        public IActionResult SignUpForm(Appointment appt)
         {
             if (ModelState.IsValid)
             {
-                _blahContext.Add(appt);
-                _blahContext.SaveChanges();
+                repo.CreateAppoint(appt);
+                //repo.SaveAppoint();
 
                 return View("Confirmation", appt);
             }
@@ -75,6 +75,16 @@ namespace Temple_Tour_SignUp.Controllers
             {
                 return View(appt);
             }
+            //[HttpPost]
+            //public IActionResult SignUpSlots(TimeSlot ts)
+            //{
+            //    context.Add(ts);
+            //    context.SaveChanges();
+            //    return View();
+            //}
+
+
         }
     }
 }
+

@@ -8,8 +8,8 @@ using Temple_Tour_SignUp.Models;
 namespace Temple_Tour_SignUp.Migrations
 {
     [DbContext(typeof(SignUpContext))]
-    [Migration("20220322044223_Initial")]
-    partial class Initial
+    [Migration("20220323163200_Migrationreboot")]
+    partial class Migrationreboot
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,7 +77,7 @@ namespace Temple_Tour_SignUp.Migrations
 
                     b.HasKey("TimeSlotId");
 
-                    b.ToTable("TimeSlots");
+                    b.ToTable("TimeSlotResponse");
 
                     b.HasData(
                         new
