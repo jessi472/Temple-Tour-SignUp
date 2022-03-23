@@ -7,8 +7,10 @@
 
 <h1>Sign up</h1>
 
-<div>
-    <form method="post">
+<div class="align-items-center">
+    <form method="post" asp-controller="Home" asp-action="SignUpForm">
+        <div asp-validation-summary="All"></div>
+
         <label asp-for="TimeSlotId">@(ViewBag.TimeSlot.Date + ' ' + ViewBag.TimeSlot.Time)</label>
         <input asp-for="TimeSlotId" type="hidden" value="@ViewBag.TimeSlot.TimeSlotId" />
         <br />

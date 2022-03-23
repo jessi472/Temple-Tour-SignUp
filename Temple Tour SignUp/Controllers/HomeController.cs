@@ -58,8 +58,18 @@ namespace Temple_Tour_SignUp.Controllers
         [HttpPost]
         public IActionResult SignUpForm (Appointment appt)
         {
-            _blahContext.Appointments.Add(appt);
-            _blahContext.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _blahContext.Add(appt);
+                _blahContext.SaveChanges();
+
+                return View("Confirmation", appt);
+            }
+            else
+            {
+                return View(appt);
+            }
+
             return View("Confirmation", appt);
         }
         
