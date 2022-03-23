@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Appointment
+
+<h1>Sign up</h1>
+
+<div class="align-items-center">
+    <form method="post" asp-controller="Home" asp-action="SignUpForm">
+        <div asp-validation-summary="All"></div>
+
+        <label asp-for="TimeSlotId">@(ViewBag.TimeSlot.Date + ' ' + ViewBag.TimeSlot.Time)</label>
+        <input asp-for="TimeSlotId" type="hidden" value="@ViewBag.TimeSlot.TimeSlotId" />
+        <br />
+        <label asp-for="GroupName">Group Name:</label>
+        <input type="text" asp-for="GroupName" />
+        <br />
+        <p>Group Size Max 15</p>
+        <label asp-for="GroupSize">Group Size:</label>
+        <input type="number" asp-for="GroupSize" />
+        <br />
+        <label asp-for="Email">Email:</label>
+        <input type="text" asp-for="Email" />
+        <br />
+        <label asp-for="Phone">Phone Number:</label>
+        <input asp-for="Phone" />
+        <br />
+        <button type="submit" class="btn btn-success">Confirm Appointment</button>
+        @*<button class="btn btn-secondary" asp-controller="Home" asp-action="SignUpSlots">Cancel</button>*@
+        @*Use this to reset the timeslot to available and
+            redirect to the home page or a "sorry to see you go page" that we could also use if they cancel the appointment in the edit view*@
+    </form>
+</div>
