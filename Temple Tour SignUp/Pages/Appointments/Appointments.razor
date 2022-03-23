@@ -39,7 +39,7 @@
         }*@
 
 
-            <td><button>Edit</button></td>
+            <td><NavLink class="btn-warning btn-sm" href="@GetEditUrl(a.AppointmentId)">Edit</NavLink></td>
             <td><button class="btn btn-danger btn-sm" @onclick="@(x=>DeleteAppointment(a))">Delete</button></td>
         </tr>
             }
@@ -83,12 +83,12 @@
 
 @code {
     public IAppointmentRepo repo => Service;
-    //appointments model needs to be made
+    
     public IEnumerable<Appointment> AppointmentData { get; set; }
 
     protected async override Task OnInitializedAsync()
     {
-        //needs to be added
+       
         await UpdateData();
     }
 
@@ -103,6 +103,7 @@
         await UpdateData();
     }
 
+    public string GetEditUrl(long id) => $"/appointments/edit/{id}";
     //add in edit options
     // public string GetEditUrl(long id) => $"/appointments/edit/{id}";
 
