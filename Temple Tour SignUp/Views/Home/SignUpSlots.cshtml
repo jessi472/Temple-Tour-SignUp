@@ -28,23 +28,23 @@
     <tbody>
         @foreach (var x in Model.TimeSlots)
         {
-            <tr>
+        <tr>
 
-                <td>@x.Date</td>
-                <td>@x.Time</td>
-                
+            <td>@x.Date</td>
+            <td>@x.Time</td>
 
-                @if(x.Taken == false)
-                {
-                    <td>
-                        <button class="btn btn-primary">Sign Up</button>
-                    </td>
-                }
-                else
-                {
-                    <td>Taken</td>
-                }
-            </tr>
+
+            @if (x.Taken == false)
+            {
+                <td>
+                    <a asp-controller="Home" asp-action="SignUpForm" asp-route-timeslotid="@x.TimeSlotId" class="btn btn-info btn-primary">Sign Up</a>
+                </td>
+            }
+            else
+            {
+                <td>Taken</td>
+            }
+        </tr>
          }
 
         
