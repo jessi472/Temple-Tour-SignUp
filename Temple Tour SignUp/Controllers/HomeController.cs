@@ -49,14 +49,32 @@ namespace Temple_Tour_SignUp.Controllers
             return View(x);
         }
 
-        //[HttpPost]
-        //public IActionResult SignUpSlots(TimeSlot ts)
-        //{
-        //    context.Add(ts);
-        //    context.SaveChanges();
-        //    return View();
-        //}
+        [HttpGet]
+        public IActionResult SignUpForm(int timeSlotId)
+        {
+            var timeSlot = _blahContext.TimeSlots.FirstOrDefault(x => x.TimeSlotId == timeSlotId);
+            timeSlot.Taken = true;
+            _blahContext.SaveChanges(); //save timeslot as taken
 
-        
+            ViewBag.TimeSlot = timeSlot;
+
+            return View("SignUp");
+        }
+
+        [HttpPost]
+        public IActionResult SignUpForm (Appointment appt)
+        {
+            if (ModelState.IsValid)
+            {
+                _blahContext.Add(appt);
+                _blahContext.SaveChanges();
+
+                return View("Confirmation", appt);
+            }
+            else
+            {
+                return View(appt);
+            }
+        }
     }
 }
