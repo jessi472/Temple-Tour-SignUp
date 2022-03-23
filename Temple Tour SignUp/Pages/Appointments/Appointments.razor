@@ -20,10 +20,10 @@
         </tr>
     </thead>
     <tbody>
-        @if (Appointment?.Count() > 0)
+        @if (AppointmentData?.Count() > 0)
         {
 
-            @foreach (AppointmentLayout a in AppointmentData)
+            @foreach (Appointment a in AppointmentData)
             {
                 <tr>
                     <td>@a.GroupName</td>
@@ -91,12 +91,12 @@
 
     public async Task UpdateData()
     {
-        AppointmentData = await repo.Appointments.ToLIstAsync();
+        AppointmentData = await repo.Appointments.ToListAsync();
     }
 
     public async Task DeleteAppointment(Appointment a)
     {
-        repo.DeleteAppointment(a);
+        repo.DeleteAppoint(a);
         await UpdateData();
     }
 
