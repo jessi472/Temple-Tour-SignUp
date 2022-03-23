@@ -7,5 +7,14 @@ namespace Temple_Tour_SignUp.Models
 {
     public class EFAppointmentRepo : IAppointmentRepo
     {
+        private SignUpContext context { get; set; }
+
+        public EFAppointmentRepo (SignUpContext temp)
+        {
+            context = temp;
+
+        }
+
+        public IQueryable<TimeSlot> TimeSlots => context.TimeSlotResponse;
     }
 }
