@@ -8,7 +8,7 @@ using Temple_Tour_SignUp.Models;
 namespace Temple_Tour_SignUp.Migrations
 {
     [DbContext(typeof(SignUpContext))]
-    [Migration("20220322044223_Initial")]
+    [Migration("20220318231358_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,47 +16,6 @@ namespace Temple_Tour_SignUp.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
-
-            modelBuilder.Entity("Temple_Tour_SignUp.Models.Appointment", b =>
-                {
-                    b.Property<int>("AppointmentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("GroupName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("GroupSize")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("TimeSlotId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("AppointmentId");
-
-                    b.HasIndex("TimeSlotId");
-
-                    b.ToTable("Appointments");
-
-                    b.HasData(
-                        new
-                        {
-                            AppointmentId = 1,
-                            Email = "test@test.com",
-                            GroupName = "test",
-                            GroupSize = 4,
-                            Phone = "555-5555",
-                            TimeSlotId = 1
-                        });
-                });
 
             modelBuilder.Entity("Temple_Tour_SignUp.Models.TimeSlot", b =>
                 {
@@ -77,7 +36,7 @@ namespace Temple_Tour_SignUp.Migrations
 
                     b.HasKey("TimeSlotId");
 
-                    b.ToTable("TimeSlots");
+                    b.ToTable("TimeSlotResponse");
 
                     b.HasData(
                         new
@@ -717,15 +676,6 @@ namespace Temple_Tour_SignUp.Migrations
                             Taken = false,
                             Time = "8:00 PM"
                         });
-                });
-
-            modelBuilder.Entity("Temple_Tour_SignUp.Models.Appointment", b =>
-                {
-                    b.HasOne("Temple_Tour_SignUp.Models.TimeSlot", "TimeSlot")
-                        .WithMany()
-                        .HasForeignKey("TimeSlotId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
