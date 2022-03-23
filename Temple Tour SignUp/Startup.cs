@@ -28,10 +28,9 @@ namespace Temple_Tour_SignUp
         {
             services.AddControllersWithViews();
 
+
             services.AddDbContext<SignUpContext>(options =>
-            {
-                options.UseSqlite(Configuration["ConnectionStrings:SignUpDBConnection"]);
-            });
+            options.UseSqlite(Configuration.GetConnectionString("SignUpConnection")));
 
             //Repository
             services.AddScoped<IAppointmentRepo, EFAppointmentRepo>();
