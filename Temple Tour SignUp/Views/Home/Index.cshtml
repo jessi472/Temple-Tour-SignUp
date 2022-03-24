@@ -1,8 +1,150 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Layton Temple Tours";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- Header-->
+<header id="index">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <h1 class="display-5 fw-bolder text-white mb-2">Schedule tours of the new Layton, Utah Temple</h1>
+                    <p class="lead fw-normal text-white-50 mb-4">
+                        Appointments available! Tours of the temple occur every hour on the hour between 8:00 am – 8:00 pm
+                    </p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start flex-column">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">General Tour Instructions</a>
+                        <br />
+                        <a class="btn btn-outline-light btn-lg px-4" href="#!">Special Accommodations</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img src="~/img/layton_temple_rendering_lg.jpg" class="img-fluid rounded-3 my-5" alt="Layton Utah Temple Rendering" /></div>
+        </div>
+    </div>
+</header>
+<!-- Features section-->
+@*<section class="py-5" id="features">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">A better way to start building.</h2></div>
+            <div class="col-lg-8">
+                <div class="row gx-5 row-cols-1 row-cols-md-2">
+                    <div class="col mb-5 h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                        <h2 class="h5">Featured title</h2>
+                        <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                    </div>
+                    <div class="col mb-5 h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                        <h2 class="h5">Featured title</h2>
+                        <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                    </div>
+                    <div class="col mb-5 mb-md-0 h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h5">Featured title</h2>
+                        <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                    </div>
+                    <div class="col h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h5">Featured title</h2>
+                        <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Testimonial section-->
+<div class="py-5 bg-light">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 col-xl-7">
+                <div class="text-center">
+                    <div class="fs-4 mb-4 fst-italic">"Working with Start Bootstrap templates has saved me tons of development time when building new projects! Starting with a Bootstrap template just makes things easier!"</div>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                        <div class="fw-bold">
+                            Tom Ato
+                            <span class="fw-bold text-primary mx-1">/</span>
+                            CEO, Pomodoro
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+<!-- Blog preview section-->
+<section class="py-5">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+                <div class="text-center">
+                    <h2 class="fw-bolder">See the Latest Updates</h2>
+                    <p class="lead fw-normal text-muted mb-5"></p>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5">
+                <div class="card h-100 shadow border-0">
+                    <img src="~/img/layton-utah-temple-looking-down.jpg" />
+                    <div class="card-body p-4">
+                        <a class="text-decoration-none link-dark stretched-link" href="https://churchofjesuschristtemples.org/layton-utah-temple/news/"><h5 class="card-title mb-3">Hardscaping the West Side of the Layton Utah Temple</h5></a>
+                        <p class="card-text mb-0">
+                            Hard elements are being added to the west side of the Layton Utah Temple grounds including the concrete footings for a pair of planter boxes and an oblong water feature. The parking area at the northwest corner of the property has been paved, and curbing has been poured for the garden area at the southwest corner, which will separate the temple property from the residence next door with a beautifully landscaped buffer.
+                        </p>
+                    </div>
+                    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-5">
+                <div class="card h-100 shadow border-0">
+                    <img src="~/img/layton-utah-temple-sunset.jpg" />
+                    <div class="card-body p-4">
+                        <a class="text-decoration-none link-dark stretched-link" href="https://churchofjesuschristtemples.org/layton-utah-temple/news/"><h5 class="card-title mb-3">Breathtaking Sunset at the Layton Utah </h5></a>
+                        <p class="card-text mb-0">
+                            The Layton Utah Temple is more beautiful than ever with the recent additions of two spires, a spherical finial, and a gold-leafed fiberglass figure of the angel Moroni. The setting sun on another day at the construction site colored the sky in a dazzling combination of pinks, blues, yellows, and purples. The temple is one of seven currently under construction in the state with four more likely to begin construction this year or next.
+                        </p>
+                    </div>
+                    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-5">
+                <div class="card h-100 shadow border-0">
+                    <img src="~/img/layton-utah-temple-windows.jpg" />
+                    <div class="card-body p-4">
+                        <a class="text-decoration-none link-dark stretched-link" href="https://churchofjesuschristtemples.org/layton-utah-temple/news/"><h5 class="card-title mb-3">Inset Panels Installed Between Windows of the Layton Utah Temple</h5></a>
+                        <p class="card-text mb-0">
+                            On the north side of the Layton Utah Temple, ornamental inset panels are being installed between the rows of windows where the floor joists run for the upper levels. On the east side, new planter boxes have been built as part of the continued hardscaping, and the interior is a hive of activity where crews are engaged in a variety of tasks. The spires and angel Moroni statue that will top the two temple towers have not yet been delivered.
+                        </p>
+                    </div>
+                    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Call to action-->
+        <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+            <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+                <div class="mb-4 mb-xl-0">
+                    <div class="fs-3 fw-bold text-white">Learn about more temple tours</div>
+                    <div class="text-white-50">Sign up for newsletter for updates on new temples</div>
+                </div>
+                <div class="ms-xl-4">
+                    <div class="input-group mb-2">
+                        <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
+                        <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign up</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>

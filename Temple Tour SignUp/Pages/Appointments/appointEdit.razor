@@ -1,14 +1,8 @@
-﻿@page "/appointments/edit/{id:long}"
-@page "/appointments/AppointEdit/"
+﻿@page "/appointments/appointments/appointedit/{id:long}"
+
 
 @inherits OwningComponentBase<IAppointmentRepo>
 
-<style>
-    div.validation-message {
-        color: seagreen;
-        font-weight: 500
-    }
-</style>
 
 <h3>Edit Appointment</h3>
 
@@ -43,16 +37,16 @@
         <ValidationMessage For="@(()=>Appointment.Phone)"></ValidationMessage>
         <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.Phone" />
     </div>
-    <div class="form-group">
-        <label>Time</label>
-        <ValidationMessage For="@(()=>Appointment.TimeSlot.Time)"></ValidationMessage>
-        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.TimeSlot.Time" />
-    </div>
-    <div class="form-group">
-        <label>Date</label>
-        <ValidationMessage For="@(()=>Appointment.TimeSlot.Date)"></ValidationMessage>
-        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.TimeSlot.Date" />
-    </div>
+    @*<div class="form-group">
+            <label>Time</label>
+            <ValidationMessage For="@(()=>Appointment.TimeSlot.Time)"></ValidationMessage>
+            <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.TimeSlot.Time" />
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            <ValidationMessage For="@(()=>Appointment.TimeSlot.Date)"></ValidationMessage>
+            <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.TimeSlot.Date" />
+        </div>*@
     <button type="submit" class="btn btn-info">Save</button>
     <NavLink class="btn btn-danger" href="/appointments/appointments">Cancel</NavLink>
 </EditForm>
@@ -70,7 +64,7 @@
 
     protected override void OnParametersSet()
     {
-        if(Id==0)
+        if (Id == 0)
         {
             Appointment = repo.Appointments.FirstOrDefault(a => a.AppointmentId == Id);
         }
