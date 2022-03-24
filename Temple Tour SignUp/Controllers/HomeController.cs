@@ -62,12 +62,18 @@ namespace Temple_Tour_SignUp.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignUpForm(Appointment appt)
+        public IActionResult SignUpForm(Appointment appt, int timeSlotId)
         {
             if (ModelState.IsValid)
             {
+
+                var timeSlot = repo.TimeSlots.FirstOrDefault(x => x.TimeSlotId == timeSlotId);
+                timeSlot.Taken = true;
+
+                ViewBag.TimeSlot = timeSlot;
                 repo.CreateAppoint(appt);
-                //repo.SaveAppoint();
+                repo.SaveAppoint(appt);
+
 
                 return View("Confirmation", appt);
             }
