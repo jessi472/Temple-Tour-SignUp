@@ -28,8 +28,6 @@
         <input asp-for="Phone" />
         <br />
         <button type="submit" class="btn btn-success">Confirm Appointment</button>
-        @*<button class="btn btn-secondary" asp-controller="Home" asp-action="SignUpSlots">Cancel</button>*@
-        @*Use this to reset the timeslot to available and
-            redirect to the home page or a "sorry to see you go page" that we could also use if they cancel the appointment in the edit view*@
+        <a class="btn btn-secondary" asp-controller="Home" asp-action="Cancellation" asp-route-tsId="@ViewBag.TimeSlot.TimeSlotId">Cancel</a>
     </form>
 </div>

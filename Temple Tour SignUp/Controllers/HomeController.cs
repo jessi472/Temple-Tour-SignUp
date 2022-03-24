@@ -85,6 +85,14 @@ namespace Temple_Tour_SignUp.Controllers
 
 
         }
+
+        public IActionResult Cancellation(int tsId)
+        {
+            var timeSlot = repo.TimeSlots.FirstOrDefault(x => x.TimeSlotId == tsId);
+            timeSlot.Taken = false;
+
+            return View("SignUpSlots");
+        }
     }
 }
 
