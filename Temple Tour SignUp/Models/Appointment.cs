@@ -18,8 +18,10 @@ namespace Temple_Tour_SignUp.Models
         [Range(1, 15)] //(Max of 15)
         public int GroupSize { get; set; }
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
-        public string? Phone { get; set; }
+        [Phone]
+        public string Phone { get; set; }
 
         //Foreign Key Relationship
         [Required]

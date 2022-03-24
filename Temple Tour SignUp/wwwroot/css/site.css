@@ -35,7 +35,7 @@ html {
     }
 }
 
-header#index, header#tour-info {
+header#index {
     background-image: url(../img/temple-knobs.jpg);
     background-color: rgba(0, 0, 0, 0.1);
     background-position: center top;
@@ -43,7 +43,7 @@ header#index, header#tour-info {
 }
 
 .border-top {
-    border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
 }
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
