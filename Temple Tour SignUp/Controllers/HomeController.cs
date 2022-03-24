@@ -28,35 +28,14 @@ namespace Temple_Tour_SignUp.Controllers
         {
             return View();
         }
-        public IActionResult BlogHome()
-        {
-            return View();
-        }
-        public IActionResult BlogPost()
-        {
-            return View();
-        }
+        
+        
         public IActionResult Contact()
         {
             return View();
         }
-        public IActionResult Faq()
-        {
-            return View();
-        }
-        public IActionResult PortfolioItem()
-        {
-            return View();
-        }
-        public IActionResult PortfolioOverview()
-        {
-            return View();
-        }
-        public IActionResult Pricing()
-        {
-            return View();
-        }
-
+     
+     
         [HttpGet]
         public IActionResult SignUpSlots(int pageNum = 1)
         {
@@ -111,7 +90,11 @@ namespace Temple_Tour_SignUp.Controllers
             }
             else
             {
-                return View(appt);
+                var timeSlot = repo.TimeSlots.FirstOrDefault(x => x.TimeSlotId == timeSlotId);
+                timeSlot.Taken = true;
+
+                ViewBag.TimeSlot = timeSlot;
+                return View("SignUp", appt);
             }
             //[HttpPost]
             //public IActionResult SignUpSlots(TimeSlot ts)
