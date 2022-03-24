@@ -1,4 +1,4 @@
-﻿@page "/appointments/appointmentsview/appointedit/{id:long}"
+﻿@page "/appointments/appointments/appointedit/{id:long}"
 
 
 @inherits OwningComponentBase<IAppointmentRepo>
@@ -9,7 +9,6 @@
 
 
 <EditForm Model="Appointment" OnValidSubmit="SaveAppoint">
-    <DataAnnotationsValidator></DataAnnotationsValidator>
 
     @if (Appointment.AppointmentId != 0)
     {
@@ -21,33 +20,33 @@
     <div class="form-group">
         <label>Group Name</label>
         <ValidationMessage For="@(()=>Appointment.GroupName)"></ValidationMessage>
-        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Appointment.GroupName" />
+        <input class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.GroupName" />
     </div>
     <div class="form-group">
         <label>Group Size</label>
         <ValidationMessage For="@(()=>Appointment.GroupSize)"></ValidationMessage>
-        <InputNumber class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Appointment.GroupSize" />
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.GroupSize" />
     </div>
     <div class="form-group">
         <label>Email</label>
         <ValidationMessage For="@(()=>Appointment.Email)"></ValidationMessage>
-        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Appointment.Email" />
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.Email" />
     </div>
     <div class="form-group">
         <label>Phone Number</label>
         <ValidationMessage For="@(()=>Appointment.Phone)"></ValidationMessage>
-        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Appointment.Phone" />
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.Phone" />
     </div>
-    <div class="form-group">
+    @*<div class="form-group">
             <label>Time</label>
             <ValidationMessage For="@(()=>Appointment.TimeSlot.Time)"></ValidationMessage>
-            <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Appointment.TimeSlot.Time" disabled />
+            <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.TimeSlot.Time" />
         </div>
         <div class="form-group">
             <label>Date</label>
             <ValidationMessage For="@(()=>Appointment.TimeSlot.Date)"></ValidationMessage>
-            <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-Value="Appointment.TimeSlot.Date" disabled />
-        </div>
+            <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.TimeSlot.Date" />
+        </div>*@
     <button type="submit" class="btn btn-info">Save</button>
     <NavLink class="btn btn-danger" href="/appointments/appointments">Cancel</NavLink>
 </EditForm>
@@ -65,9 +64,9 @@
 
     protected override void OnParametersSet()
     {
-        if (Id != 0)
+        if (Id == 0)
         {
-            Appointment = repo.Appointments.Include(t => t.TimeSlot).FirstOrDefault(a => a.AppointmentId == Id);
+            Appointment = repo.Appointments.FirstOrDefault(a => a.AppointmentId == Id);
         }
     }
 
