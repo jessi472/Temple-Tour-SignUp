@@ -111,7 +111,7 @@ namespace Temple_Tour_SignUp.Controllers
             }
             else
             {
-                return View(appt);
+                return View("SignUp", appt);
             }
             //[HttpPost]
             //public IActionResult SignUpSlots(TimeSlot ts)
