@@ -8,8 +8,8 @@ using Temple_Tour_SignUp.Models;
 namespace Temple_Tour_SignUp.Migrations
 {
     [DbContext(typeof(SignUpContext))]
-    [Migration("20220323163200_Migrationreboot")]
-    partial class Migrationreboot
+    [Migration("20220324014704_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
