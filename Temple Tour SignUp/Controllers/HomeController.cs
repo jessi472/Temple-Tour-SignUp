@@ -24,6 +24,38 @@ namespace Temple_Tour_SignUp.Controllers
         {
             return View();
         }
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult BlogHome()
+        {
+            return View();
+        }
+        public IActionResult BlogPost()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult Faq()
+        {
+            return View();
+        }
+        public IActionResult PortfolioItem()
+        {
+            return View();
+        }
+        public IActionResult PortfolioOverview()
+        {
+            return View();
+        }
+        public IActionResult Pricing()
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult SignUpSlots(int pageNum = 1)
@@ -62,12 +94,18 @@ namespace Temple_Tour_SignUp.Controllers
         }
 
         [HttpPost]
-        public IActionResult SignUpForm(Appointment appt)
+        public IActionResult SignUpForm(Appointment appt, int timeSlotId)
         {
             if (ModelState.IsValid)
             {
+
+                var timeSlot = repo.TimeSlots.FirstOrDefault(x => x.TimeSlotId == timeSlotId);
+                timeSlot.Taken = true;
+
+                ViewBag.TimeSlot = timeSlot;
                 repo.CreateAppoint(appt);
-                //repo.SaveAppoint();
+                repo.SaveAppoint(appt);
+
 
                 return View("Confirmation", appt);
             }
