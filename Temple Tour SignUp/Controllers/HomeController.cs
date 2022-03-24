@@ -24,7 +24,7 @@ namespace Temple_Tour_SignUp.Controllers
         {
             return View();
         }
-        public IActionResult About()
+        public IActionResult TourInfo()
         {
             return View();
         }

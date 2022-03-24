@@ -13,9 +13,11 @@
                         Appointments available! Tours of the temple occur every hour on the hour between 8:00 am – 8:00 pm
                     </p>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start flex-column">
-                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">General Tour Instructions</a>
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" asp-area="" asp-controller="Home" asp-action="TourInfo" asp-fragment="general-tour-instructions">General Tour Instructions</a>
                         <br />
-                        <a class="btn btn-outline-light btn-lg px-4" href="#!">Special Accommodations</a>
+                        <a class="btn btn-outline-light btn-lg px-4" asp-area="" asp-controller="Home" asp-action="TourInfo" asp-fragment="special-accommodations">Special Accommodations</a>
+                        <br />
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" asp-area="" asp-controller="Home" asp-action="SignUpSlots">Sign Up for Tour</a>
                     </div>
                 </div>
             </div>
