@@ -2,7 +2,7 @@
 
 namespace Temple_Tour_SignUp.Migrations
 {
-    public partial class Migrationreboot : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

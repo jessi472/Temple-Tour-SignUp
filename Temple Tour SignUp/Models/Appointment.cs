@@ -19,7 +19,7 @@ namespace Temple_Tour_SignUp.Models
         public int GroupSize { get; set; }
         [Required]
         public string Email { get; set; }
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
         //Foreign Key Relationship
         [Required]
