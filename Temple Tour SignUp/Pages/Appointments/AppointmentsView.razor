@@ -1,5 +1,5 @@
-﻿@page "/appointments/appointments"
-@page "/appointments"
+﻿@page "/Appointments/Appointments"
+@page "/Appointments"
 
 
 @inherits OwningComponentBase<IAppointmentRepo> 
@@ -104,11 +104,8 @@
         await UpdateData();
     }
 
-    public string GetEditUrl(long id) => $"/appointments/appointments/appointedit/{id}";
     //add in edit options
-    // public string GetEditUrl(long id) => $"/appointments/edit/{id}";
+    public string GetEditUrl(long Id) => $"/appointments/appointmentsview/appointedit/{Id}";
 
 }
 
-
-@*We need a the appointment time to have a contact object or vice versa so I can include all data*@
