@@ -23,6 +23,38 @@ namespace Temple_Tour_SignUp.Controllers
         {
             return View();
         }
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult BlogHome()
+        {
+            return View();
+        }
+        public IActionResult BlogPost()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult Faq()
+        {
+            return View();
+        }
+        public IActionResult PortfolioItem()
+        {
+            return View();
+        }
+        public IActionResult PortfolioOverview()
+        {
+            return View();
+        }
+        public IActionResult Pricing()
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult SignUpSlots()

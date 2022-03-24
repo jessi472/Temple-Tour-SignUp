@@ -1,14 +1,15 @@
-﻿
-@{
+﻿@{
+    ViewData["Title"] = "Tour Sign Up";
 }
+
 @model List<TimeSlot>
 
 <table class="table table-bordered table-striped">
 
     <thead>
-        
+
         <tr>
-            
+
             <td>Date</td>
             <td>Time</td>
             <td>Taken</td>
@@ -24,9 +25,9 @@
 
                 <td>@x.Date</td>
                 <td>@x.Time</td>
-                
 
-                @if(x.Taken == false)
+
+                @if (x.Taken == false)
                 {
                     <td>
                         <button class="btn btn-primary">Sign Up</button>
@@ -37,9 +38,9 @@
                     <td>Taken</td>
                 }
             </tr>
-         }
+        }
 
-        
+
 
     </tbody>
 </table>

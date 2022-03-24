@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Views\Home\About.cshtml" />
+    <None Include="Views\Home\BlogHome.cshtml" />
+    <None Include="Views\Home\BlogPost.cshtml" />
+    <None Include="Views\Home\Contact.cshtml" />
+    <None Include="Views\Home\Faq.cshtml" />
+    <None Include="Views\Home\PortfolioItem.cshtml" />
+    <None Include="Views\Home\PortfolioOverview.cshtml" />
+    <None Include="Views\Home\Pricing.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
 
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
 
