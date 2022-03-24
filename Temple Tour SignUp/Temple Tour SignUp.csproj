@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Views\Home\About.cshtml" />
+    <None Include="Views\Home\TourInfo.cshtml" />
     <None Include="Views\Home\BlogHome.cshtml" />
     <None Include="Views\Home\BlogPost.cshtml" />
     <None Include="Views\Home\Contact.cshtml" />
