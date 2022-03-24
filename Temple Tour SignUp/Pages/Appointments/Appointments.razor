@@ -2,7 +2,7 @@
 @page "/appointments"
 
 
-@inherits OwningComponentBase
+@inherits OwningComponentBase<IAppointmentRepo>
 
 <table class="table table-bordered table-info">
 
@@ -20,18 +20,94 @@
         </tr>
     </thead>
     <tbody>
+        @if (AppointmentData?.Count() > 0)
+        {
+
+            @foreach (Appointment a in AppointmentData)
+            {
         <tr>
-            <td>Sam</td>
-            <td>13</td>
-            <td>cool@coll.net</td>
-            <td>435-320-1091</td>
-            <td>03/03/22</td>
-            <td>10:00am</td>
-            <td><button>Edit</button></td>
-            <td><button>Delete</button></td>
+            <td>@a.GroupName</td>
+            <td>@a.GroupSize</td>
+            <td>@a.Email</td>
+            <td>@a.Phone</td>
+            @*Should add in the time slot for each appointment*@
+            @*@foreach (TimeSlot item in a.Timeslot)
+        {
+           <td>@a.TimeSlot.Date</td>
+            <td>@a.TimeSlot.Time</td>
+                <td>@a.TimeSlotId</td>
+        }*@
+
+
+            <td><NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(a.AppointmentId)">Edit</NavLink></td>
+            <td><button class="btn btn-danger btn-sm" @onclick="@(x=>DeleteAppointment(a))">Delete</button></td>
         </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-secondary text-center font-weight-bold">No Appointments Scheduled</td>
+            </tr>
+        }
     </tbody>
 </table>
+
+
+
+<!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch static backdrop modal
+</button>-->
+
+<!-- Modal -->
+<!--<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+
 @code {
+    public IAppointmentRepo repo => Service;
+    
+    public IEnumerable<Appointment> AppointmentData { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+       
+        await UpdateData();
+    }
+
+    public async Task UpdateData()
+    {
+        AppointmentData = await repo.Appointments.ToListAsync();
+    }
+
+    public async Task DeleteAppointment(Appointment a)
+    {
+        repo.DeleteAppoint(a);
+        await UpdateData();
+    }
+
+    public string GetEditUrl(long id) => $"/appointments/appointments/appointedit/{id}";
+    //add in edit options
+    // public string GetEditUrl(long id) => $"/appointments/edit/{id}";
 
 }
+
+
+@*We need a the appointment time to have a contact object or vice versa so I can include all data*@

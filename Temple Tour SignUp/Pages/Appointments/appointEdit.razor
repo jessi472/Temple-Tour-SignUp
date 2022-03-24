@@ -1,0 +1,86 @@
+﻿@page "/appointments/appointments/appointedit/{id:long}"
+
+
+@inherits OwningComponentBase<IAppointmentRepo>
+
+
+<h3>Edit Appointment</h3>
+
+
+
+<EditForm Model="Appointment" OnValidSubmit="SaveAppoint">
+
+    @if (Appointment.AppointmentId != 0)
+    {
+        <div class="form-group">
+            <label>ID</label>
+            <input class="form-control shadow-sm mb-1 bg-body rounded" disabled value="@Appointment.AppointmentId" />
+        </div>
+    }
+    <div class="form-group">
+        <label>Group Name</label>
+        <ValidationMessage For="@(()=>Appointment.GroupName)"></ValidationMessage>
+        <input class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.GroupName" />
+    </div>
+    <div class="form-group">
+        <label>Group Size</label>
+        <ValidationMessage For="@(()=>Appointment.GroupSize)"></ValidationMessage>
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.GroupSize" />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <ValidationMessage For="@(()=>Appointment.Email)"></ValidationMessage>
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.Email" />
+    </div>
+    <div class="form-group">
+        <label>Phone Number</label>
+        <ValidationMessage For="@(()=>Appointment.Phone)"></ValidationMessage>
+        <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.Phone" />
+    </div>
+    @*<div class="form-group">
+            <label>Time</label>
+            <ValidationMessage For="@(()=>Appointment.TimeSlot.Time)"></ValidationMessage>
+            <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.TimeSlot.Time" />
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            <ValidationMessage For="@(()=>Appointment.TimeSlot.Date)"></ValidationMessage>
+            <InputText class="form-control shadow-sm mb-1 bg-body rounded" @bind-value="Appointment.TimeSlot.Date" />
+        </div>*@
+    <button type="submit" class="btn btn-info">Save</button>
+    <NavLink class="btn btn-danger" href="/appointments/appointments">Cancel</NavLink>
+</EditForm>
+
+<br />
+<br />
+
+@code {
+    public IAppointmentRepo repo => Service;
+    [Inject]
+    public NavigationManager NavManage { get; set; }
+    [Parameter]
+    public long Id { get; set; } = 0;
+    public Appointment Appointment { get; set; } = new Appointment();
+
+    protected override void OnParametersSet()
+    {
+        if (Id == 0)
+        {
+            Appointment = repo.Appointments.FirstOrDefault(a => a.AppointmentId == Id);
+        }
+    }
+
+    public void SaveAppoint()
+    {
+        if (Id == 0)
+        {
+            repo.CreateAppoint(Appointment);
+        }
+        else
+        {
+            repo.SaveAppoint(Appointment);
+        }
+        NavManage.NavigateTo("/appointments/appointments");
+    }
+
+}

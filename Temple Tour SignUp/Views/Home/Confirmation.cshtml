@@ -1,0 +1,12 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Appointment
+
+<h1>
+    Thank you for setting up an appointment! A confirmation email will be sent to @Model.Email.Length
+    <br /> We'll see you @ViewBag.TimeSlot.Date at @ViewBag.TimeSlot.Time
+</h1>
