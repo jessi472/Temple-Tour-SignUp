@@ -2,7 +2,8 @@
 @page "/appointments"
 
 
-@inherits OwningComponentBase<IAppointmentRepo>
+@inherits OwningComponentBase<IAppointmentRepo> 
+
 
 <table class="table table-bordered table-info">
 
@@ -31,12 +32,9 @@
             <td>@a.Email</td>
             <td>@a.Phone</td>
             @*Should add in the time slot for each appointment*@
-            @*@foreach (TimeSlot item in a.Timeslot)
-        {
+     
            <td>@a.TimeSlot.Date</td>
             <td>@a.TimeSlot.Time</td>
-                <td>@a.TimeSlotId</td>
-        }*@
 
 
             <td><NavLink class="btn btn-warning btn-sm" href="@GetEditUrl(a.AppointmentId)">Edit</NavLink></td>
@@ -83,18 +81,21 @@
 
 @code {
     public IAppointmentRepo repo => Service;
-    
+
     public IEnumerable<Appointment> AppointmentData { get; set; }
+    public IEnumerable<TimeSlot> TimeSlots { get; set; }
 
     protected async override Task OnInitializedAsync()
     {
-       
+
         await UpdateData();
     }
 
     public async Task UpdateData()
     {
-        AppointmentData = await repo.Appointments.ToListAsync();
+        AppointmentData = await repo.Appointments
+            .Include(t =>t.TimeSlot)
+            .ToListAsync();
     }
 
     public async Task DeleteAppointment(Appointment a)
