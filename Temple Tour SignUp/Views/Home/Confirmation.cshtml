@@ -7,6 +7,6 @@
 @model Appointment
 
 <h1>
-    Thank you for setting up an appointment! A confirmation email will be sent to @Model.Email
-    <br /> We'll see you @Model.TimeSlot.Date at @Model.TimeSlot.Time
+    Thank you for setting up an appointment! A confirmation email will be sent to @Model.Email.Length
+    <br /> We'll see you @ViewBag.TimeSlot.Date at @ViewBag.TimeSlot.Time
 </h1>
