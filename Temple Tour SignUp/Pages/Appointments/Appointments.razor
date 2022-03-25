@@ -100,6 +100,10 @@
 
     public async Task DeleteAppointment(Appointment a)
     {
+
+
+        var timeSlot = repo.TimeSlots.FirstOrDefault(x => x.TimeSlotId == a.TimeSlotId);
+        timeSlot.Taken = false;
         repo.DeleteAppoint(a);
         await UpdateData();
     }
