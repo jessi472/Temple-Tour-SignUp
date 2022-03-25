@@ -96,15 +96,17 @@ namespace Temple_Tour_SignUp.Controllers
                 ViewBag.TimeSlot = timeSlot;
                 return View("SignUp", appt);
             }
-            //[HttpPost]
-            //public IActionResult SignUpSlots(TimeSlot ts)
-            //{
-            //    context.Add(ts);
-            //    context.SaveChanges();
-            //    return View();
-            //}
+        }
 
+        public IActionResult Cancellation(int tsId)
+        {
+            var timeSlot = repo.TimeSlots.FirstOrDefault(x => x.TimeSlotId == tsId);
+            if (timeSlot.Taken == true)
+            {
+                timeSlot.Taken = false;
+            }
 
+            return RedirectToAction("SignUpSlots");
         }
     }
 }
